@@ -1,0 +1,263 @@
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+.card {
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-body {
+    padding: 2.5rem;
+}
+
+h1 {
+    color: #4a154b;
+    font-weight: 700;
+    font-size: 2.2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#qrCode {
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    margin-top: 2rem;
+}
+
+#qrCode canvas {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+    border: 2px solid #e9ecef;
+    padding: 0.8rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.25);
+}
+
+.btn {
+    padding: 0.8rem;
+    font-weight: 600;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #764ba2, #667eea);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #4a154b;
+    border: none;
+}
+
+.btn-secondary:hover:not([disabled]) {
+    background: #5a255b;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(74, 21, 75, 0.4);
+}
+
+.btn-secondary:disabled {
+    background: #6c757d;
+    opacity: 0.65;
+}
+
+@media (max-width: 768px) {
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Estilos para el navbar */
+.navbar {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: white !important;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos para los formularios */
+.form-container {
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+textarea.form-control {
+    resize: none;
+}
+
+.form-select {
+    border: 2px solid #e9ecef;
+    padding: 0.8rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.form-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.25);
+}
+
+/* Estilos para la sección de personalización */
+.qr-options {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 2rem !important;
+}
+
+.qr-options h5 {
+    color: #4a154b;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.qr-options .row {
+    --bs-gutter-y: 1.5rem;
+}
+
+.qr-options .form-group {
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.qr-options .form-label {
+    color: #666;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.qr-options .col-md-12 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.qr-options .form-select {
+    margin-bottom: 0.5rem;
+}
+
+.form-control-color {
+    height: 42px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .qr-options {
+        padding: 1.5rem !important;
+    }
+    
+    .row.g-4 {
+        --bs-gutter-y: 1rem;
+    }
+    
+    .qr-options .form-group {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Estilos para el escáner */
+#reader {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#result {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 15px;
+    word-break: break-all;
+}
+
+/* Estilos para las nuevas opciones de personalización */
+.qr-options .form-control-color {
+    height: 42px;
+}
+
+.qr-options .form-group {
+    position: relative;
+}
+
+.qr-options .form-control-file {
+    padding: 0.8rem;
+    cursor: pointer;
+}
+
+/* Previsualización del logo */
+.logo-preview {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 4px;
+    background: #fff;
+    padding: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+} 
