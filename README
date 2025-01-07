@@ -1,0 +1,119 @@
+# QR Code Generator
+
+Una aplicación web moderna y elegante para generar códigos QR personalizados. Permite crear códigos QR para URLs, texto, configuraciones WiFi y tarjetas de contacto.
+
+## 🚀 Características
+
+- **Múltiples tipos de QR:**
+  - URLs
+  - Texto plano
+  - Configuración WiFi
+  - Tarjetas de contacto (vCard)
+
+- **Personalización avanzada:**
+  - Color personalizado
+  - Diferentes tamaños
+  - Estilos de puntos (cuadrados, círculos, redondeados)
+  - Niveles de corrección de errores
+  - Opción para agregar logo
+
+- **Funcionalidades adicionales:**
+  - Escáner de QR integrado
+  - Historial de contactos
+  - Descarga de códigos QR
+  - Diseño responsive
+
+## 🛠️ Tecnologías utilizadas
+
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- Bootstrap 5
+- MongoDB
+- Express.js
+- Node.js
+
+## 📦 Instalación
+
+1. Clona el repositorio:
+https://github.com/LiliaPo/Generador_QR.git
+
+2. Instala las dependencias:
+bash
+cd Generador_QR
+npm install
+
+3. Configura las variables de entorno:
+bash
+cp .env.example .env
+
+4. Inicia el servidor:
+bash
+npm start
+
+## 💻 Uso
+
+1. Abre la aplicación en tu navegador
+2. Selecciona el tipo de QR que deseas generar
+3. Ingresa la información requerida
+4. Personaliza el aspecto del QR (opcional)
+5. Haz clic en "Generar QR"
+6. Descarga o comparte tu código QR
+
+## 🔧 API Endpoints
+
+- `POST /api/contacts` - Crear nuevo contacto
+- `GET /api/contacts` - Obtener lista de contactos
+- `GET /api/contacts/:id` - Obtener contacto específico
+- `DELETE /api/contacts/:id` - Eliminar contacto
+
+## 📱 Características responsive
+
+- Diseño adaptable a todos los dispositivos
+- Interfaz optimizada para móviles
+- Navegación simplificada en pantallas pequeñas
+
+## 🔒 Seguridad
+
+- Validación de datos de entrada
+- Sanitización de inputs
+- Manejo seguro de datos sensibles
+
+## 🤝 Contribuir
+
+1. Haz fork del proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para más detalles
+
+## 👥 Autores
+
+- **Tu Nombre** - *Trabajo inicial* - [TuUsuario](https://github.com/tuusuario)
+
+## 🙏 Agradecimientos
+
+- [qrcode.js](https://github.com/davidshimjs/qrcodejs) - Librería para generación de QR
+- [Bootstrap](https://getbootstrap.com/) - Framework CSS
+- [Font Awesome](https://fontawesome.com/) - Iconos
+
+## 📝 Notas adicionales
+
+- La aplicación requiere una conexión a MongoDB
+- Se recomienda usar navegadores modernos para mejor experiencia
+- Para el escáner de QR se requiere permiso de cámara
+
+## 🔮 Próximas características
+
+- [ ] Integración con redes sociales
+- [ ] Más estilos de personalización
+- [ ] Exportación en diferentes formatos
+- [ ] Estadísticas de uso
+- [ ] Modo oscuro
+
+
+
