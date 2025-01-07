@@ -22,38 +22,40 @@ body {
 }
 
 .card-body {
-    padding: 2.5rem;
+    padding: 1.2rem 2rem;
 }
 
 h1 {
     color: #4a154b;
     font-weight: 700;
-    font-size: 2.2rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #qrCode {
-    min-height: 250px;
+    min-height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 10px;
     background: #f8f9fa;
     border-radius: 15px;
-    margin-top: 2rem;
+    margin-top: 0.4rem;
 }
 
 #qrCode canvas {
     max-width: 100%;
     height: auto;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;
 }
 
 .form-control {
     border: 2px solid #e9ecef;
-    padding: 0.8rem;
+    padding: 0.5rem 0.8rem;
     border-radius: 12px;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     transition: all 0.3s ease;
 }
 
@@ -63,12 +65,13 @@ h1 {
 }
 
 .btn {
-    padding: 0.8rem;
+    padding: 0.4rem;
     font-weight: 600;
     border-radius: 12px;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
+    font-size: 0.85rem;
 }
 
 .btn-primary {
@@ -137,7 +140,13 @@ h1 {
 /* Estilos para los formularios */
 .form-container {
     transition: all 0.3s ease;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
+}
+
+.form-container.d-none {
+    margin: 0;
+    padding: 0;
+    height: 0;
 }
 
 textarea.form-control {
@@ -146,9 +155,9 @@ textarea.form-control {
 
 .form-select {
     border: 2px solid #e9ecef;
-    padding: 0.8rem;
+    padding: 0.5rem 0.8rem;
     border-radius: 12px;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     transition: all 0.3s ease;
 }
 
@@ -162,17 +171,20 @@ textarea.form-control {
     border: 1px solid rgba(0, 0, 0, 0.1);
     background: rgba(255, 255, 255, 0.9) !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    padding: 2rem !important;
+    padding: 0.8rem !important;
+    margin-top: 0.6rem !important;
+    margin-bottom: 0.6rem !important;
 }
 
 .qr-options h5 {
     color: #4a154b;
     font-weight: 600;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.6rem;
+    font-size: 1rem;
 }
 
 .qr-options .row {
-    --bs-gutter-y: 1.5rem;
+    --bs-gutter-y: 1rem;
 }
 
 .qr-options .form-group {
@@ -182,8 +194,9 @@ textarea.form-control {
 
 .qr-options .form-label {
     color: #666;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.4rem;
     display: block;
+    font-size: 0.85rem;
 }
 
 .qr-options .col-md-12 {
@@ -196,7 +209,7 @@ textarea.form-control {
 }
 
 .form-control-color {
-    height: 42px;
+    height: 36px;
     padding: 3px;
     cursor: pointer;
 }
@@ -260,4 +273,35 @@ textarea.form-control {
     background: #fff;
     padding: 2px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Ajustar espaciados verticales en la sección de personalización */
+.qr-options {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 1.2rem !important;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.qr-options h5 {
+    color: #4a154b;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.qr-options .row {
+    --bs-gutter-y: 1rem;
+}
+
+/* Ajustar espaciado de los botones */
+.d-grid.gap-2 {
+    margin-top: 0.6rem;
+    gap: 0.4rem !important;
+    margin-bottom: 0.4rem;
+}
+
+.btn {
+    padding: 0.6rem;
 } 

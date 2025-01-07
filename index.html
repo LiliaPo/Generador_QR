@@ -42,6 +42,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#" data-type="history">
+                            <i class="fas fa-history me-1"></i>Historial
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#" id="scannerBtn">
                             <i class="fas fa-camera me-1"></i>Escanear QR
                         </a>
@@ -182,8 +187,35 @@
                             <div id="qrCode" class="mx-auto"></div>
                         </div>
 
-                        <div class="mt-5" id="contactsSection">
-                            <h2 class="text-center mb-4">Historial de Contactos</h2>
+                        <!-- Mover esta sección fuera del contenedor principal y convertirla en un nuevo form-container -->
+                        <div class="form-container d-none" id="historyForm">
+                            <!-- Barra de búsqueda y filtros -->
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <input type="search" 
+                                           class="form-control" 
+                                           placeholder="Buscar contactos..."
+                                           id="searchInput">
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-select" id="filterType">
+                                        <option value="">Todos los tipos</option>
+                                        <option value="url">URLs</option>
+                                        <option value="wifi">WiFi</option>
+                                        <option value="vcard">Contactos</option>
+                                        <option value="text">Texto</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-select" id="sortBy">
+                                        <option value="date">Fecha</option>
+                                        <option value="name">Nombre</option>
+                                        <option value="type">Tipo</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Tabla de contactos -->
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <thead>
@@ -202,32 +234,6 @@
                                 </table>
                             </div>
                         </div>
-
-                        <!-- Agregar barra de búsqueda y filtros -->
-                        <div class="row mb-4">
-                            <div class="col-md-6">
-                                <input type="search" 
-                                       class="form-control" 
-                                       placeholder="Buscar contactos..."
-                                       id="searchInput">
-                            </div>
-                            <div class="col-md-3">
-                                <select class="form-select" id="filterType">
-                                    <option value="">Todos los tipos</option>
-                                    <option value="url">URLs</option>
-                                    <option value="wifi">WiFi</option>
-                                    <option value="vcard">Contactos</option>
-                                    <option value="text">Texto</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <select class="form-select" id="sortBy">
-                                    <option value="date">Fecha</option>
-                                    <option value="name">Nombre</option>
-                                    <option value="type">Tipo</option>
-                                </select>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -239,6 +245,7 @@
     <!-- Scripts existentes -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcode.js@1.0.0/qrcode.min.js"></script>
+    <script src="https://unpkg.com/qr-scanner/qr-scanner.umd.min.js"></script>
     <script src="script.js"></script>
 
     <!-- Modal para el escáner -->
@@ -256,8 +263,5 @@
             </div>
         </div>
     </div>
-
-    <!-- Agregar antes de cerrar el body -->
-    <script src="https://unpkg.com/qr-scanner/qr-scanner.umd.min.js"></script>
 </body>
 </html> 

@@ -1,16 +1,21 @@
-import QrScanner from 'qr-scanner';
-
 document.addEventListener('DOMContentLoaded', () => {
+    // Elementos DOM
     const navLinks = document.querySelectorAll('.nav-link');
     const forms = document.querySelectorAll('.form-container');
     const generateBtn = document.getElementById('generateBtn');
     const downloadBtn = document.getElementById('downloadBtn');
     const qrCodeDiv = document.getElementById('qrCode');
 
+    // Verificar que todos los elementos existen
+    console.log('Forms found:', forms.length); // Para depuración
+    
     // Manejador para cambiar entre formularios
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
+            
+            // No procesar si es el botón de escanear
+            if (link.id === 'scannerBtn') return;
             
             // Actualizar navegación activa
             navLinks.forEach(l => l.classList.remove('active'));
@@ -18,10 +23,17 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Mostrar el formulario correspondiente
             const formType = link.getAttribute('data-type');
+            console.log('Changing to form:', formType); // Para depuración
+
             forms.forEach(form => {
-                form.classList.add('d-none');
                 if (form.id === `${formType}Form`) {
                     form.classList.remove('d-none');
+                    // Cargar contactos si estamos en la pestaña de historial
+                    if (formType === 'history') {
+                        loadContacts();
+                    }
+                } else {
+                    form.classList.add('d-none');
                 }
             });
 
@@ -32,6 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 qrOptions.classList.add('d-none');
             }
+
+            // Limpiar el QR anterior
+            qrCodeDiv.innerHTML = '';
+            downloadBtn.disabled = true;
         });
     });
 
@@ -337,6 +353,87 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             console.error('Error al compartir:', error);
         }
+    }
+
+    // Agregar esta función para obtener los datos según el tipo de formulario
+    function getQRData(activeForm) {
+        let qrData = '';
+        const formType = activeForm.id.replace('Form', '');
+
+        switch (formType) {
+            case 'url':
+                qrData = document.getElementById('urlInput').value.trim();
+                if (!qrData) {
+                    alert('Por favor, ingresa una URL');
+                    return null;
+                }
+                break;
+
+            case 'wifi':
+                const ssid = activeForm.querySelector('input[placeholder*="SSID"]').value;
+                const password = activeForm.querySelector('input[type="password"]').value;
+                const encryption = activeForm.querySelector('select').value;
+                if (!ssid) {
+                    alert('El nombre de la red (SSID) es requerido');
+                    return null;
+                }
+                qrData = `WIFI:T:${encryption};S:${ssid};P:${password};;`;
+                break;
+
+            case 'vcard':
+                const name = activeForm.querySelector('input[placeholder*="Nombre"]').value;
+                const email = activeForm.querySelector('input[type="email"]').value;
+                const phone = activeForm.querySelector('input[type="tel"]').value;
+                const company = activeForm.querySelector('input[placeholder*="Empresa"]').value;
+                
+                if (!name || !email || !phone) {
+                    alert('Nombre, email y teléfono son requeridos');
+                    return null;
+                }
+                
+                qrData = `BEGIN:VCARD\nVERSION:3.0\nN:${name}\nEMAIL:${email}\nTEL:${phone}\nORG:${company}\nEND:VCARD`;
+                // Guardar el contacto en la base de datos
+                saveContact({ name, email, phone, company });
+                break;
+
+            case 'text':
+                qrData = activeForm.querySelector('textarea').value.trim();
+                if (!qrData) {
+                    alert('Por favor, ingresa algún texto');
+                    return null;
+                }
+                break;
+        }
+
+        return qrData;
+    }
+
+    // Agregar función de callback para el QR
+    function handleQRCallback(error) {
+        if (error) {
+            console.error(error);
+            alert('Error al generar el código QR');
+            return;
+        }
+        downloadBtn.disabled = false;
+    }
+
+    // Funciones de validación
+    function isValidUrl(url) {
+        try {
+            new URL(url);
+            return true;
+        } catch {
+            return false;
+        }
+    }
+
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function isValidPhone(phone) {
+        return /^\+?[\d\s-]{6,}$/.test(phone);
     }
 
     loadContacts();
